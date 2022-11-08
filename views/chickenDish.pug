@@ -2,7 +2,7 @@ extends layout
 
 block content 
     h1=title 
-    - let results = [{"dishName": "chicken fry", "dishPrice": 12.72, "mainIngredient": "chicken"},{"dishName": "chicken popcorn", "dishPrice": 4.12, "mainIngredient": "Corn"},{"dishName": "Chicken biryani", "dishPrice": 18.72, "mainIngredient": "Rice"}]
+    - let results = dishResults
     div.container-fluid 
         div.row 
             each item, index in results
