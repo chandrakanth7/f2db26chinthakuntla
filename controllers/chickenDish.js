@@ -12,10 +12,17 @@ exports.chickenDish_list = async function(req, res) {
     }   
 }; 
  
-// for a specific dish. 
-exports.chickenDish_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Chicken Dish detail: ' + req.params.id); 
-}; 
+// for a specific dish.  
+exports.chickenDish_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await chickenDish.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   };
  
 // Handle dish create on POST. 
 exports.chickenDish_create_post = async function(req, res) { 
@@ -43,9 +50,23 @@ exports.chickenDish_delete = function(req, res) {
 }; 
  
 // Handle dish update form on PUT. 
-exports.chickenDish_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Chicken Dish update PUT' + req.params.id); 
-}; 
+exports.chickenDish_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+   ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await chickenDish.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.dishName) toUpdate.dishName = req.body.dishName;
+    if(req.body.dishPrice) toUpdate.dishPrice = req.body.dishPrice;
+    if(req.body.mainIngredient) toUpdate.mainIngredient = req.body.mainIngredient;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}failed`);
+    }
+   }; 
 
 // VIEWS 
 // Handle a show all view 
