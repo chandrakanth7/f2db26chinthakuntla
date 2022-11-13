@@ -1,0 +1,49 @@
+extends layout
+block content
+ h1= title
+ if (toShow == null)
+    h2 No instance to delete
+ else
+    - let chickenDishid = toShow._id
+    - let dishName = toShow.dishName
+    - let mainIngredient = toShow.mainIngredient
+    - let price = toShow.price
+    - let actionid = "/resource/chickenDish/" + chickenDishid
+    script let actionid = "#{actionid}"
+    div
+        div.row
+            div(class='chickenDishAttr mr-3') Chicken Dish ID is:
+            div #{chickenDishid}
+        div.row
+            div(class='chickenDishAttr mr-3') Chicken Dish Name is:
+            div #{dishName}
+        div.row
+            div(class='chickenDishAttr mr-3') Chicken Dish mainIngredient is:
+            div #{mainIngredient}
+        div.row
+            div(class='chickenDishAttr mr-3') Chicken Dish Price is:
+            div #{price}
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+    script.
+        function cancel() {
+            window.location.href='/ChickenDish'
+        }
+    script.
+        function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+        method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+        alert("Delete succeded")
+        window.location.href='/chickenDish'
+        // TODO handle body
+        }).catch((error) => {
+        // TODO handle error
+        alert("Delete failed " + error )
+        });
+        }

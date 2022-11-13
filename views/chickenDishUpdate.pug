@@ -1,0 +1,40 @@
+extends layout
+block content
+ h1= title
+ - let chickenDishid = toShow._id
+ - let dishName = toShow.dishName
+ - let mainIngredient = toShow.mainIngredient
+ - let price = toShow.price
+
+ div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{chickenDishid}
+ - let actionid = "/resource/chickenDish/" + chickenDishid
+ form(id='ChickenDishForm', action= actionid, method="PUT")
+    div.form-group
+        label.chickenDishAttr(for='dishName') ChickenDish type
+        input#dishName(type='text', name='dishName', value= dishName )
+    div.form-group
+        label.chickenDishAttr(for='mainIngredient') ChickenDish mainIngredient
+        input#mainIngredient(type='text', name='mainIngredient', value= mainIngredient )
+    div.form-group
+        label.chickenDishAttr(for='price') ChickenDish price
+        input#price(type='number', name='price', value= price )
+    input(type="submit")
+ script.
+    document.forms['ChickenDishForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+    // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+            alert("Update succeded")
+    // TODO handle body
+        }).catch((error) => {
+    // TODO handle error
+            alert("Update failed " + error )
+        });
+    });
