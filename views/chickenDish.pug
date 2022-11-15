@@ -8,6 +8,7 @@ block content
             background-size:cover;
             height:100vh;
             background-repeat:no-repeat;
+            text-align:center;
         }
         .container-fluid{
             color:white;
@@ -37,7 +38,8 @@ block content
         }
     - let results = dishResults
         h1=title 
-         div.container-fluid 
+        a(class='btn btn-light' href=`/chickenDish/create`) Create new Chicken Dish Instance
+        div.container-fluid 
             div.row 
                 each item, index in results
                     div.col-sm-2(onclick=`buy(${index})`)
