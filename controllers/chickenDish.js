@@ -33,7 +33,7 @@ exports.chickenDish_create_post = async function (req, res) {
     // and require that it be a json object
     document.dishName = req.body.dishName;
     document.mainIngredient = req.body.mainIngredient;
-    document.dishPrice = req.body.dishPrice;
+    document.price = req.body.price;
     try {
         let result = await document.save();
         res.send(result);
