@@ -71,9 +71,9 @@ async function recreateDB(){
  // Delete everything
  await chickenDish.deleteMany();
 
- let instance1 = new chickenDish({dishName:"chicken rice", mainIngredient:'rice',price:25.4});
- let instance2 = new chickenDish({dishName:"chicken noodles", mainIngredient:'noodles',price:15.8});
- let instance3 = new chickenDish({dishName:"chicken fried rice", mainIngredient:'rice',price:20.0});
+ let instance1 = new chickenDish({dishName:"Rice", mainIngredient:'rice',price:25.4});
+ let instance2 = new chickenDish({dishName:"Noodles", mainIngredient:'noodles',price:15.8});
+ let instance3 = new chickenDish({dishName:"Fried rice", mainIngredient:'rice',price:20.0});
 
  instance1.save(function (err, doc)
  {

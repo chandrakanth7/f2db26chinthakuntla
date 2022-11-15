@@ -1,20 +1,23 @@
 extends layout
 block content
  h1= title
- - let chickedishid = toShow._id
- - let dishName = toShow.dishName
- - let mainIngredient = toShow.mainIngredient
- - let price = toShow.price 
- div
-    div.row
-        div(class='chickenDishAttr mr-3') ChickenDish ID is:
-        div #{chickedishid}
-    div.row
-        div(class='chickenDishAttr mr-3') chickenDish Name is:
-        div #{dishName}
-    div.row
-        div(class='chickenDishAttr mr-3') chickenDish main ingredient is:
-        div #{mainIngredient}
-    div.row
-        div(class='chickenDishAttr mr-3') chickenDish Price is:
-        div #{price}
+ if (toShow == null)
+    h2 No instance to delete
+ else
+    - let chickedishid = toShow._id
+    - let dishName = toShow.dishName
+    - let mainIngredient = toShow.mainIngredient
+    - let price = toShow.price 
+    div
+        div.row
+            div(class='chickenDishAttr mr-3') ChickenDish ID is:
+            div #{chickedishid}
+        div.row
+            div(class='chickenDishAttr mr-3') chickenDish Name is:
+            div #{dishName}
+        div.row
+            div(class='chickenDishAttr mr-3') chickenDish main ingredient is:
+            div #{mainIngredient}
+        div.row
+            div(class='chickenDishAttr mr-3') chickenDish Price is:
+            div #{price}
