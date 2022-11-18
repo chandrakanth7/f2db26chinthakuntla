@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('f2wb26chinthakuntla:server');
+var debug = require('debug')('f2db26chinthakuntla:server');
 var http = require('http');
 
 /**
