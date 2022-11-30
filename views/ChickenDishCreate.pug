@@ -23,10 +23,13 @@ block content
     }).then((resp) => {
     return resp.json(); // or resp.text() or whatever the server sends
     }).then((body) => {
-    alert("Save succeded")
+      if(body.error)
+         alert('save failed Please enter valid Data')
+      else
+         alert("Save succeded")
     // TODO handle body
     }).catch((error) => {
     // TODO handle error
-    alert("Save failed " + error )
+    alert("Save failed not valid input" )
     });
     });

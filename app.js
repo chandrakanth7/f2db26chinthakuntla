@@ -39,10 +39,6 @@ var chickenDishRouter = require('./routes/chickenDish');
 var gridBuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resources');
-var detailRouter = require('./routes/chickenDishDetail');
-var createRouter = require('./routes/chickenDishCreate');
-var updateRouter = require('./routes/chickenDishUpdate');
-var deleteRouter = require('./routes/chickenDishDelete');
 var app = express();
 
 // view engine setup
@@ -69,10 +65,6 @@ app.use('/chickenDish', chickenDishRouter);
 app.use('/gridbuild', gridBuildRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource',resourceRouter);
-app.use('/chickenDish',detailRouter);
-app.use('/chickenDish',createRouter);
-app.use('/chickenDish',updateRouter);
-app.use('/chickenDish',deleteRouter);
 
 var Account =require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
